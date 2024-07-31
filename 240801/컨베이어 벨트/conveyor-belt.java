@@ -26,7 +26,7 @@ public class Main {
 
         t%=n;
         for(int i=0; i<n; i++)
-        ans[i]= belt[(i+t)%n];
+            ans[i]= belt[(n-t+i)%n];
 
         StringBuilder sb= new StringBuilder();
 
