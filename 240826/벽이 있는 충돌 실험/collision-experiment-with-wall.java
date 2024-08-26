@@ -41,7 +41,7 @@ public class Main {
                 map[x][y]= dir;
             }
 
-            int sum= n*n;
+            int sum= n*n*n;
             while(sum --> 0) simul(n, map);
             
             int ans= 0;
