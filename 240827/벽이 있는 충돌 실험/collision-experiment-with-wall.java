@@ -13,6 +13,8 @@ public class Main {
 
         int t= Integer.parseInt(br.readLine());
 
+        StringBuilder sb= new StringBuilder();
+
         while(t-->0){
 
         StringTokenizer st= new StringTokenizer(br.readLine());
@@ -52,8 +54,10 @@ public class Main {
                     if(map[i][j]> 0) ans++;
             }
 
-            System.out.println(ans);
+            sb.append(ans).append("\n");
         }
+
+        System.out.print(sb);
 
     }
 
