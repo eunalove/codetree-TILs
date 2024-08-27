@@ -23,7 +23,8 @@ public class Main {
         int[][] map= new int[n][n];
         
         int m= Integer.parseInt(st.nextToken());
-
+        int sum= n*m;
+        
             while(m-->0){
                 st= new StringTokenizer(br.readLine());
 
@@ -43,7 +44,6 @@ public class Main {
                 map[x][y]= dir;
             }
 
-            int sum= n+n;
             while(sum --> 0) simul(n, map);
             
             
