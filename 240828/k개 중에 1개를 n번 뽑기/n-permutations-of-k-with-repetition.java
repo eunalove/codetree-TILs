@@ -15,13 +15,13 @@ public class Main {
         int n= Integer.parseInt(st.nextToken());
 
         int[] ans= new int[n];
-        dfs(0, 1, k, n, ans);
+        dfs(0, k, n, ans);
 
         System.out.print(sb);
 
     }
 
-    static void dfs(int cnt, int val, int k, int n, int[] ans){
+    static void dfs(int cnt, int k, int n, int[] ans){
 
         if(cnt == n){
             for(int tmp: ans)
@@ -33,7 +33,7 @@ public class Main {
 
         for(int i=1; i<=k; i++){
             ans[cnt]= i;
-            dfs(cnt+1, val, k, n, ans);
+            dfs(cnt+1, k, n, ans);
         }
     }
 }
