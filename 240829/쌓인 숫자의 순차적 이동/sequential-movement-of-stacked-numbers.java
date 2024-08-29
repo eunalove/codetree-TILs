@@ -65,7 +65,7 @@ public class Main {
         }
 
         int maxVal = -1;
-        int maxX = -1, maxY = -1;
+        int maxX = x, maxY = y;
 
         // Find the maximum value in the 8 adjacent cells
         for (int i = 0; i < 8; i++) {
@@ -82,6 +82,7 @@ public class Main {
         }
 
         // Move only the numbers up to 'cur' to the new position
+        if (maxX != x || maxY != y) {
             ArrayList<Integer> temp = new ArrayList<>();
             while (!grid[x][y].isEmpty()) {
                 int top = grid[x][y].remove(0);
@@ -90,6 +91,9 @@ public class Main {
             }
 
             grid[maxX][maxY].addAll(0, temp);
+
+        
+        }
         
     }
 }
