@@ -65,24 +65,28 @@ public class Main {
         }
 
         int maxVal = -1;
-        int maxX = x, maxY = y;
+        int maxX = -1, maxY = -1;
 
         // Find the maximum value in the 8 adjacent cells
-        for (int i = 0; i < 8; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
+for (int i = 0; i < 8; i++) {
+    int nx = x + dx[i];
+    int ny = y + dy[i];
 
-            if (nx < 0 || ny < 0 || nx >= n || ny >= n) continue;
+    // 범위를 벗어나는지 체크
+    if (nx < 0 || ny < 0 || nx >= n || ny >= n) continue;
 
-            if (map[nx][ny] > maxVal) {
-                maxVal = map[nx][ny];
-                maxX = nx;
-                maxY = ny;
-            }
+    // 인접한 위치의 모든 값을 검사하여 최대 값을 찾기
+    for (int value : grid[nx][ny]) {
+        if (value > maxVal) {
+            maxVal = value;
+            maxX = nx;
+            maxY = ny;
         }
+    }
+}
 
         // Move only the numbers up to 'cur' to the new position
-        if (maxX != x || maxY != y) {
+        if (maxX != -1) {
             ArrayList<Integer> temp = new ArrayList<>();
             while (!grid[x][y].isEmpty()) {
                 int top = grid[x][y].remove(0);
@@ -91,9 +95,7 @@ public class Main {
             }
 
             grid[maxX][maxY].addAll(0, temp);
-
-        
         }
-        
+
     }
 }
