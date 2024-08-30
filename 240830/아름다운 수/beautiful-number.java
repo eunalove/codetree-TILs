@@ -20,20 +20,20 @@ public class Main {
     static void dfs(int cnt, int[] arr, int n){
         if(cnt == n){
 
-            int same= 1;
             boolean flag= false;
-            for(int i=0; i<arr.length -1; i++){
-                if(arr[i] == arr[i+1]) same++;
-                else{
-                    if(same%arr[i] != 0){
+
+            for(int i=0; i<arr.length; i+=arr[i]){
+                if(i > n || i+arr[i] >n){
+                    flag= true;
+                    break;
+                }
+                for(int j=i; j<i+arr[i]; j++){
+                    if(arr[i] != arr[j]){
                         flag= true;
                         break;
                     }
-                    same= 1;
                 }
             }
-
-            if(same < arr[arr.length -1] || same%arr[arr.length -1] != 0) flag= true;
 
             if(!flag) ans++;
 
