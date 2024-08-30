@@ -5,10 +5,12 @@ import java.io.*;
 public class Main {
 
     static class Pair{
+        int num;
         int dir;
         int w;
 
-        public Pair(int dir, int w){
+        public Pair(int num, int dir, int w){
+            this.num= num;
             this.dir= dir;
             this.w= w;
         }
@@ -28,6 +30,7 @@ public class Main {
 
         Pair[][] map= new Pair[n][n];
 
+        int cnt= 0;
         for(int i=0; i<m; i++){
             st= new StringTokenizer(br.readLine());
             int x= Integer.parseInt(st.nextToken()) -1;
@@ -42,21 +45,12 @@ public class Main {
             }
 
             int w= Integer.parseInt(st.nextToken());
-            map[x][y]= new Pair(dir, w);
+            map[x][y]= new Pair(cnt++, dir, w);
         }
 
-        // for(int i=0; i<n; i++){
-        //     for(int j=0; j<n; j++){
-        //         System.out.print(map[i][j]+" ");
-
-        //     System.out.println();
-        //     }
-        // }
-
-        while(t-->0)
-            simul(n, map);
-
-        int cnt= 0; int maxW= 0;
+        while(t-->0) simul(n, map);
+            
+        cnt= 0; int maxW= 0;
 
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
@@ -79,6 +73,7 @@ public class Main {
             for(int j=0; j<n; j++){
                 if(map[i][j] != null){
 
+                    int num= map[i][j].num;
                     int dir= map[i][j].dir;
                     int w= map[i][j].w;
 
@@ -87,17 +82,19 @@ public class Main {
 
                     if(nx<0 || ny<0 || nx>=n || ny>=n){ //벽에 부딪힌 경우
                         dir= (dir+2)%4;
-                        if(copy[i][j] == null) copy[i][j]= new Pair(dir, w);
+                        if(copy[i][j] == null) copy[i][j]= new Pair(num, dir, w);
                         else{
-                            dir= w > copy[i][j].w? dir: copy[i][j].dir;
-                            copy[i][j] = new Pair(dir, w+copy[i][j].w);
+                            dir= num > copy[i][j].num? dir: copy[i][j].dir;
+                            num= num > copy[i][j].num? num: copy[i][j].num;
+                            copy[i][j] = new Pair(num, dir, w+copy[i][j].w);
                         }
                     }
                     else{
-                        if(copy[nx][ny] == null) copy[nx][ny]= new Pair(dir, w);
+                        if(copy[nx][ny] == null) copy[nx][ny]= new Pair(num, dir, w);
                         else{
-                            dir= w > copy[nx][ny].w? dir: copy[nx][ny].dir;
-                            copy[nx][ny] = new Pair(dir, w+copy[nx][ny].w);
+                            dir= num > copy[nx][ny].num? dir: copy[nx][ny].dir;
+                            num= num > copy[nx][ny].num? num: copy[nx][ny].num;
+                            copy[nx][ny] = new Pair(num, dir, w+copy[nx][ny].w);
                         }
                     }
                 }
