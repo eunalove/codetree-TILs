@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static int ans;
+    static int ans= Integer.MIN_VALUE;
 
     public static void main(String[] args)throws IOException {
 
