@@ -22,7 +22,7 @@ public class Main {
         }
 
         boolean[] vis= new boolean[n];
-        dfs(1, n, vis, map);
+        dfs(0, n, vis, map);
 
         System.out.print(ans);
 
@@ -30,10 +30,12 @@ public class Main {
 
     static void dfs(int cnt, int n, boolean[] vis, int[][] map){
         
+    if(cnt != 0){
         if(cnt == n || map[cnt-1][1] >= map[cnt][0]){
             ans= ans> cnt+1? ans: cnt+1;
             return;
         }
+    }
 
         for(int i=0; i<n; i++){
             if(!vis[i]){
