@@ -22,27 +22,25 @@ public class Main {
         }
 
         boolean[] vis= new boolean[n];
-        dfs(0, n, vis, map);
+        dfs(0, n, vis, map, -1);
 
         System.out.print(ans);
 
     }
 
-    static void dfs(int cnt, int n, boolean[] vis, int[][] map){
+    static void dfs(int cnt, int n, boolean[] vis, int[][] map, int lastEnd){
         
-    if(cnt != 0){
-        if(cnt == n || map[cnt-1][1] >= map[cnt][0]){
-            ans= ans> cnt+1? ans: cnt+1;
-            return;
-        }
-    }
+        ans= ans> cnt? ans: cnt;
 
         for(int i=0; i<n; i++){
-            if(!vis[i]){
-                vis[i]= true;
-                dfs(cnt+1, n, vis, map);
-                vis[i]= false;
+            if(vis[i]) continue;
+            // 이전에 선택한 선분과 겹치지 않는지 확인
+            if (lastEnd != -1 && map[i][0] <= lastEnd) {
+                continue;
             }
+            vis[i]= true;
+            dfs(cnt+1, n, vis, map, map[i][1]);
+            vis[i]= false;
         }
     }
 }
