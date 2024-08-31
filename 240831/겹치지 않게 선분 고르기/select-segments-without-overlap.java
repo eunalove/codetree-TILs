@@ -34,11 +34,12 @@ public class Main {
 
         for(int i=0; i<n; i++){
             if(vis[i]) continue;
+            
+            vis[i]= true;
             // 이전에 선택한 선분과 겹치지 않는지 확인
             if (lastEnd != -1 && map[i][0] <= lastEnd) {
                 continue;
             }
-            vis[i]= true;
             dfs(cnt+1, n, vis, map, map[i][1]);
             vis[i]= false;
         }
