@@ -25,7 +25,7 @@ public class Main {
 
             boolean flag= false;
             if(n >=3){
-            for(int i=0; i<=n-3; i+=3){
+            for(int i=0; i<=n-3; i++){
                 if(arr[i] == arr[i+1] && arr[i] == arr[i+2]){
                     flag= true;
                     break;
