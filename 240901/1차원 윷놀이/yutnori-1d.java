@@ -29,22 +29,26 @@ public class Main {
     }
 
     static void dfs(int cur, int n, int m, int k, int[] score, int[] horse){
+
+        ans= Math.max(ans, calc(horse, m));
         
-        if(cur == n){
+        if(cur == n) return;
+
+        for(int i=0; i<k; i++){
+            if(horse[i] >= m-1) continue;
+
+            horse[i] += score[cur];
+            dfs(cur+1, n, m, k, score, horse);
+            horse[i] -= score[cur];
+        }
+    }
+
+    static int calc(int[] horse, int m){
 
             int cnt = 0;
             for(int h: horse)
                 if(h >= m -1) cnt++;
 
-            ans= ans > cnt? ans:cnt;
-
-            return;
-        }
-
-        for(int i=0; i<k; i++){
-            horse[i] += score[cur];
-            dfs(cur+1, n, m, k, score, horse);
-            horse[i] -= score[cur];
-        }
+            return cnt;
     }
 }
