@@ -22,7 +22,7 @@ public class Main {
 
     static void dfs(int cnt, int loca, int n, int[] jump){
 
-        if(cnt > n) return;
+        if(cnt > n || loca >=n) return;
 
         if(loca == n-1){
             ans= ans > cnt? cnt: ans;
