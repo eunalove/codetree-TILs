@@ -19,33 +19,23 @@ public class Main {
         for(int i=0; i<n; i++)
             arrN[i]= Integer.parseInt(st.nextToken());
 
-        int[] arrM= new int[m];
-
-        dfs(0, n, m, arrN, arrM);
+        dfs(0, 0, 0, n, m, arrN);
 
         System.out.print(ans);
 
     }
 
-    static void dfs(int cur, int n, int m, int[] arrN, int[] arrM){
+    static void dfs(int cur, int idx, int cnt, int n, int m, int[] arrN){
+
+        if(idx >= n) return;
+
         if(cur == m){
-            int result= make_xor(arrM, m);
-            ans= ans> result? ans: result;
+            ans= ans> cnt? ans: cnt;
             return;
         }
 
-        for(int i=0; i<n; i++){
-            arrM[cur]= arrN[i];
-            dfs(cur+1, n, m, arrN, arrM);
-        }
-    }
+        dfs(cur, idx+1, cnt, n, m, arrN);
+        dfs(cur+1, idx+1, cnt^arrN[idx], n, m, arrN);
 
-    static int make_xor(int[] arrM, int m){
-
-        int result= arrM[0];
-        for(int i=1; i<m; i++)
-            result ^= arrM[i];
-
-        return result;
     }
 }
