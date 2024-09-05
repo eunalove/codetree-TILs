@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static int ans= 0;
+    static int ans= -1;
 
     public static void main(String[] args)throws IOException {
 
@@ -27,12 +27,13 @@ public class Main {
 
     static void dfs(int cur, int idx, int cnt, int n, int m, int[] arrN){
 
-        if(idx >= n) return;
-
         if(cur == m){
             ans= ans> cnt? ans: cnt;
             return;
         }
+
+        
+        if(idx == n) return;
 
         dfs(cur, idx+1, cnt, n, m, arrN);
         dfs(cur+1, idx+1, cnt^arrN[idx], n, m, arrN);
