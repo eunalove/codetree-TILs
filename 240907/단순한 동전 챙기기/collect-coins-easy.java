@@ -41,7 +41,7 @@ public class Main {
         }
 
         list.sort((l1, l2)-> {
-            return l1.num = l2.num;
+            return l1.num - l2.num;
         });
 
         subset(sx, sy, 0, 0, 0, ex, ey);
