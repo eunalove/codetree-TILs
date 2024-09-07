@@ -32,9 +32,12 @@ public class Main {
         if(cur == n){
 
             int tmp= 0;
-            for(int i=0; i<n-1; i++)
+            for(int i=0; i<n-1; i++){
+                if(map[arr[i]][arr[i+1]] == 0) return;
                 tmp+= map[arr[i]][arr[i+1]];
+            }
 
+            if(map[arr[n-1]][arr[0]] == 0) return;
             tmp+= map[arr[n-1]][arr[0]];
 
             ans= Math.min(ans, tmp);
