@@ -29,11 +29,14 @@ public class Main {
 
     static void subset(int cur, int idx, int n, int m, int[][] choose, int[][] map){
         if(cur == m){
+            int max =0;
 
             for(int i=0; i<m; i++){
                 for(int j=i+1; j<m; j++)
-                    distance(i,j, choose);
+                    max= Math.max(max, distance(i,j, choose));
             }
+
+            ans= Math.min(ans, max);
 
             return;
         }
@@ -48,8 +51,8 @@ public class Main {
         
     }
 
-    static void distance(int i, int j, int[][] choose){
+    static int distance(int i, int j, int[][] choose){
         int dis= (choose[i][0] - choose[j][0])*(choose[i][0] - choose[j][0]) + (choose[i][1] - choose[j][1])*(choose[i][1] - choose[j][1]);
-        ans= ans> dis? dis: ans;
+        return dis;
     }
 }
