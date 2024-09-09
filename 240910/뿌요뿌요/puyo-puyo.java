@@ -36,21 +36,9 @@ public class Main {
                 
                 bombTmp= 0;
 
-                boolean[][] visTmp= new boolean[n][n];
-                for(int k=0; k<n; k++){
-                    for(int l=0; l<n; l++)
-                        visTmp[k][l]= vis[k][l];
-                }
-
-                dfs(map[i][j], i, j, n, visTmp, map);
+                dfs(map[i][j], i, j, n, vis, map);
                 
-                if(bombTmp >=4){
-                    bombCnt++;
-                    for(int k=0; k<n; k++){
-                        for(int l=0; l<n; l++)
-                            vis[k][l]= visTmp[k][l];
-                    }
-                }
+                if(bombTmp >=4) bombCnt++;
                 
                 bombMax= bombMax> bombTmp? bombMax: bombTmp;
             }
