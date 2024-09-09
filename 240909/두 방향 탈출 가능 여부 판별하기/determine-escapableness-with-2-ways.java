@@ -49,9 +49,7 @@ public class Main {
                     
             vis[nx][ny]= true;
             dfs(nx, ny, n, m, vis, map);
-            vis[nx][ny]= false;
-                
-            
+               
         }
     }
 }
