@@ -27,7 +27,7 @@ public class Main {
         }
 
         boolean[][] vis;
-        int maxK =-1;
+        int maxK =1;
 
         for(int k=1; k<=max; k++){
             vis= new boolean[n][m];
