@@ -28,6 +28,7 @@ public class Main {
         q.add(new int[]{0,0});
 
         boolean[][] vis= new boolean[n][m];
+        vis[0][0]= true;
 
         while(!q.isEmpty()){
 
@@ -38,15 +39,13 @@ public class Main {
                 break;
             }
 
-            
-
             for(int i=0; i<4; i++){
 
                 int nx= cur[0] + dx[i];
                 int ny= cur[1] + dy[i];
 
                 if(nx <0 || ny<0 || nx>=n || ny>=m || map[nx][ny] == 0 || vis[nx][ny]) continue;
-                vis[cur[0]][cur[1]]= true;
+                vis[nx][ny]= true;
                 q.add(new int[]{nx, ny});
             }
         }
