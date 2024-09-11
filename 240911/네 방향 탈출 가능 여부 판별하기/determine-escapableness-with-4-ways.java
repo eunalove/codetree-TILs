@@ -38,7 +38,7 @@ public class Main {
                 break;
             }
 
-            vis[cur[0]][cur[1]]= true;
+            
 
             for(int i=0; i<4; i++){
 
@@ -46,7 +46,7 @@ public class Main {
                 int ny= cur[1] + dy[i];
 
                 if(nx <0 || ny<0 || nx>=n || ny>=m || map[nx][ny] == 0 || vis[nx][ny]) continue;
-
+                vis[cur[0]][cur[1]]= true;
                 q.add(new int[]{nx, ny});
             }
         }
