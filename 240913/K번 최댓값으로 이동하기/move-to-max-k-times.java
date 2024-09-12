@@ -33,6 +33,7 @@ public class Main {
 
         for(int i=0; i<k; i++) cur= bfs(cur[0], cur[1], n, map);
         
+        
 
         cur[0]++;
         cur[1]++;
@@ -69,12 +70,14 @@ public class Main {
         }
 
         Loop: for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++)
+            for(int j=0; j<n; j++){
+                if(!vis[i][j]) continue;
                 if(map[i][j] == max){
                     ex= i;
                     ey= j;
                     break Loop;
-                } 
+                }
+            }
         }
 
         return new int[]{ex, ey};
