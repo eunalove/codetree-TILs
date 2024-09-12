@@ -53,14 +53,13 @@ public class Main {
 
             int[] cur= q.poll();
 
-            vis[cur[0]][cur[1]]= true;
-
             for(int i=0; i<4; i++){
                 int nx= cur[0] + dx[i];
                 int ny= cur[1] + dy[i];
 
                 if(nx<0 || ny<0 || nx>=n || ny>=n || map[nx][ny] == 1 || vis[nx][ny]) continue;
 
+                vis[nx][ny]= true;
                 q.add(new int[]{nx, ny});
                 
             }
