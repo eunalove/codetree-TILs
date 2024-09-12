@@ -48,6 +48,7 @@ public class Main {
         
         Queue<int[]> q= new ArrayDeque();
         q.add(new int[]{x,y});
+        vis[x][y]= true;
 
         while(!q.isEmpty()){
 
