@@ -49,34 +49,10 @@ public class Main {
 
     static void subSet(int cur, int idx, int n, int m, int k, int len, int[] choose, int[][] start, int[][] map, ArrayList<int[]> stones){
         if(cur == m){
-
-            int[][] copy= new int[n][n];
-
-            for(int i=0; i<n; i++){
-                for(int j=0; j<n; j++)
-                    copy[i][j]= map[i][j];
-            }
-
-            for(int i=0; i<m; i++){
-                int[] stone= stones.get(choose[i]);
-                copy[stone[0]][stone[1]]= 0;
-            }
             
-            boolean[][] vis= new boolean[n][n];
-            
-            for(int i=0; i<k; i++)
-                bfs(start[i][0], start[i][1], n, copy, vis);
+        bfs(start, n, m, k, choose, map, stones);
 
-            int cnt= 0;
-
-            for(int i=0; i<n; i++){
-                for(int j=0; j<n; j++)
-                    if(vis[i][j]) cnt++;
-            }
-
-            ans= ans> cnt? ans: cnt;
-
-            return;
+        return;
         }
 
         if(idx >= len) return;
@@ -88,14 +64,28 @@ public class Main {
         
     }
 
-    static void bfs(int x, int y, int n, int[][] map, boolean[][] vis){
+    static void bfs(int[][] start, int n, int m, int k, int[] choose, int[][] map, ArrayList<int[]> stones){
 
+        int[][] copy= new int[n][n];
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++)
+                copy[i][j]= map[i][j];
+        }
+
+        for(int i=0; i<m; i++){
+            int[] stone= stones.get(choose[i]);
+            copy[stone[0]][stone[1]]= 0;
+        }
+            
+        boolean[][] vis= new boolean[n][n];
 
         Queue<int[]> q= new ArrayDeque<>();
-        q.add(new int[]{x, y});
-
-        vis[x][y]= true;
-
+        for(int i=0; i<k; i++){
+            q.add(new int[]{start[i][0], start[i][1]});
+            vis[start[i][0]][start[i][1]]= true;
+        }
+       
         while(!q.isEmpty()){
 
             int cur[]= q.poll();
@@ -104,11 +94,19 @@ public class Main {
                 int nx= cur[0] + dx[i];
                 int ny= cur[1] + dy[i];
 
-                if(nx<0 || ny<0 || nx>=n || ny >= n || map[nx][ny] == 1 || vis[nx][ny]) continue;
+                if(nx<0 || ny<0 || nx>=n || ny >= n || copy[nx][ny] == 1 || vis[nx][ny]) continue;
 
                 vis[nx][ny]= true;
                 q.add(new int[]{nx, ny});
             }
         }
+            int cnt= 0;
+
+            for(int i=0; i<n; i++){
+                for(int j=0; j<n; j++)
+                    if(vis[i][j]) cnt++;
+            }
+
+            ans= ans> cnt? ans: cnt;
     }
 }
