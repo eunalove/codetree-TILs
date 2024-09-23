@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Main {
 
-    static int ans= -1;
+    static int ans= Integer.MAX_VALUE;
     static int n, k, sx, sy, ex, ey;
     static int[] dx= {-1, 1, 0, 0};
     static int[] dy= {0, 0, -1, 1};
@@ -93,7 +93,7 @@ public class Main {
             Node cur= q.poll();
 
             if(cur.x == ex && cur.y == ey){
-                ans= ans> cur.dis? ans: cur.dis;
+                ans= Math.min(ans, cur.dis);
                 return;
             }
 
