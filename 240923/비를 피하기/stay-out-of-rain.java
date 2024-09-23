@@ -60,9 +60,7 @@ public class Main {
 
         Queue<Node> q= new ArrayDeque<>();
         boolean[][] vis= new boolean[n][n];
-
-        boolean flag= false;
-
+        
         q.add(new Node(sx, sy, 0));
         vis[sx][sy]= true;
 
@@ -72,8 +70,7 @@ public class Main {
 
             if(map[cur.x][cur.y] == 3){
                 ans[sx][sy]= cur.dis;
-                flag= true;
-                break;
+                return;
             }
 
             for(int i=0; i<4; i++){
@@ -89,6 +86,6 @@ public class Main {
             }
         }
 
-        if(!flag) ans[sx][sy]= -1;
+        ans[sx][sy]= -1;
     }
 }
