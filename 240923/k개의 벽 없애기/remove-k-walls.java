@@ -50,7 +50,8 @@ public class Main {
         int[][] select= new int[k][2];
         subSet(0, 0, select, map, walls);
 
-        System.out.print(ans);
+        if(ans == Integer.MAX_VALUE) System.out.print(-1);
+        else System.out.print(ans);
 
     }
 
