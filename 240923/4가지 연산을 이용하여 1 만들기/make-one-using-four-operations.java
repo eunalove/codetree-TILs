@@ -6,6 +6,7 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n= Integer.parseInt(br.readLine());
+        boolean[] vis= new boolean[2000001];
 
         PriorityQueue<int[]> pq= new PriorityQueue<>((pq1, pq2)-> {
             return pq1[1]- pq2[1];
@@ -17,6 +18,9 @@ public class Main {
         while(!pq.isEmpty()){
             
             int[] cur= pq.poll();
+
+            if(vis[cur[0]]) continue;
+            vis[cur[0]]= true;
 
             if(cur[0] == 1){
                 ans= cur[1];
