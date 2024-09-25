@@ -7,19 +7,18 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n= Integer.parseInt(br.readLine());
         
-        int[] dp= new int[n+1];
-        if(n==1) System.out.print(2);
-        else if(n==2) System.out.print(7);
-        else{
+            int[] dp= new int[n+1];
             
+            dp[0]= 1;
             dp[1]= 2;
-            dp[2]= 7;
 
-            for(int i=3; i<=n; i++)
-                dp[i]= (dp[i-1]*4 - dp[i-2]*3)%1000000007;
-
-
+            for(int i=2; i<=n; i++){
+                dp[i]= (dp[i-1] *2 + dp[i-2]*3)%1000000007;
+                for(int j= i-3; j>=0; j--)
+                    dp[i]= (dp[i]+ dp[j] *2) %1000000007;
+            }
+               
             System.out.print(dp[n]);
-        }
+        
     }
 }
