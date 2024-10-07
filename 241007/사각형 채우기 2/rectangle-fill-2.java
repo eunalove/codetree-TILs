@@ -11,12 +11,12 @@ public class Main {
 
         dp[0]= 1;
         dp[1]= 3;
-        dp[2]= 10;
+        dp[2]= 5;
 
         for(int i=3; i<n; i++)
             dp[i]= dp[i-1] + dp[i-2]+ dp[i-3];
 
-        if(n < 3) System.out.print(dp[n-1]);
+        if(n <= 3) System.out.print(dp[n-1]);
         else System.out.print(dp[n-1]+1);
 
     }
