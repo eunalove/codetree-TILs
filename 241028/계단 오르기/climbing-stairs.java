@@ -14,7 +14,7 @@ public class Main {
         for(int i=4; i<=n; i++)
             dp[i]= (dp[i-2]+ dp[i-3])%100007;
 
-        System.out.print(dp[n]);
+        System.out.print(dp[n]%100007);
 
     }
 }
