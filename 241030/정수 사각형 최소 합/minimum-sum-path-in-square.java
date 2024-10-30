@@ -27,7 +27,7 @@ public class Main {
         for(int j=n-2; j>=0; j--)
             dp[0][j]= map[0][j] + dp[0][j+1];
 
-        for(int i= n-2; i<n; i++){
+        for(int i= 1; i<n; i++){
             for(int j=n-2; j>=0; j--)
                 dp[i][j]= Math.min(dp[i-1][j], dp[i][j+1]) + map[i][j];
         }
