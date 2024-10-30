@@ -18,7 +18,7 @@ public class Main {
         for(int i=1; i<n; i++){
             for(int j= i-1; j>=0; j--)
                 if(arr[i] > arr[j]){
-                    dp[i]= dp[j]+1;
+                    dp[i]= Math.max(dp[i], dp[j]+1);
                     break;
                 }
         }
