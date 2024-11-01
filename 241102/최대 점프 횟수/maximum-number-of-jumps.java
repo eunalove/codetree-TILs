@@ -17,10 +17,11 @@ public class Main {
         for(int i=1; i<n; i++)
             dp[i]= -1;
 
-        for(int i=0; i<n; i++){
-            if(arr[i]== 0 && dp[i] == -1) break;
-            for(int j=i+1; j<=i+arr[i] && j<n; j++)
-                dp[j]= Math.max(dp[i]+1, dp[j]);
+        for (int i = 0; i < n; i++) {
+            if (dp[i] == -1) continue;
+            for (int j = 1; j <= arr[i] && i + j < n; j++) {
+                dp[i + j] = Math.max(dp[i + j], dp[i] + 1);
+            }
         }
         
         int ans= 0;
