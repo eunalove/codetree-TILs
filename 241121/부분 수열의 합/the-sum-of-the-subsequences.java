@@ -6,7 +6,8 @@ public class Main {
     
     public static int n, m;
     public static int[] arr = new int[MAX_N + 1];
-    boolean[MAX_N + 1][MAX_M + 1];
+    
+    public static boolean[][] dp = new boolean[MAX_N + 1][MAX_M + 1];
     
     public static void initialize() {
         dp[0][0] = true;
