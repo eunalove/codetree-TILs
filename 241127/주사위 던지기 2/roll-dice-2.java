@@ -25,16 +25,18 @@ public class Main {
 
     static void permul(int cur, int sum, int n, int m, int[] arr){
 
-        if(cur == n && sum == m){
-            for(int element: arr)
-                sb.append(element).append(" ");
+        if(sum > m) return;
 
-            sb.append("\n");
+        if(cur ==n){
+            if(sum == m){
+                for(int element: arr)
+                    sb.append(element).append(" ");
+
+                sb.append("\n");
+            }
 
             return;
         }
-
-        if(cur >= n || sum > m) return;
 
         for(int i=1; i<=6; i++){
             arr[cur]= i;
