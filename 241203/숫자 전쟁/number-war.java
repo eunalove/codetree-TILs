@@ -14,10 +14,11 @@ public class Main {
         for (int i = 1; i <= n; i++) b[i] = sc.nextInt();
 
         for (int i = 0; i <= n; i++)
-            for (int j = 0; j <= n; j++) 
+            for (int j = 0; j <= n; j++) dp[i][j] = -1;
+
         dp[0][0] = 0;
 
-         for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (dp[i][j] == -1) continue;
 
@@ -30,6 +31,7 @@ public class Main {
                 dp[i + 1][j + 1] = Math.max(dp[i + 1][j + 1], dp[i][j]);
             }
         }
+
         int ans = 0;
         for (int i = 0; i <= n; i++) {
             ans = Math.max(ans, dp[i][n]);
