@@ -26,13 +26,14 @@ public class Main {
             }
         }
 
-        int ans = Integer.MIN_VALUE; // 결과값을 가장 작은 값으로 초기화
+        int ans = 0; // 결과값을 가장 작은 값으로 초기화
 
         // 가능한 모든 3칸 조합 확인
         for(int i = 1; i <= n; i++){
             for(int j = 1; j <= m; j++){
 
-                int max = Integer.MIN_VALUE;
+                int max = 0;
+                
 
                 max = Math.max(max, map[i-1][j] + map[i][j+1] + map[i][j]); // 위 + 오른쪽
                 max = Math.max(max, map[i+1][j] + map[i][j+1] + map[i][j]); // 아래 + 오른쪽
