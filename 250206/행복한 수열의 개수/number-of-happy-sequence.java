@@ -25,28 +25,30 @@ public class Main {
         for(int i=0; i<n; i++){
             int seq= 1;
             int longst= 1;
-            for(int j=1; j<n; j++){
-                
-                if(map[i][j] == map[i][j-1]) seq++;
-                else seq= 1;
-                
-                longst= seq > longst? seq: longst;
+            for(int j=0; j<n-1; j++){
+                if(map[i][j] == map[i][j+1]) seq++;
+                else{
+                    longst= seq > longst? seq: longst;
+                    seq= 1;
+                }
             }
 
+        longst= seq > longst? seq: longst;
         if(longst >= m) ans++;
         }
 
         for(int j=0; j<n; j++){
             int seq= 1;
             int longst= 1;
-            for(int i=1; i<n; i++){
-                
-                if(map[i][j] == map[i-1][j]) seq++;
-                else seq= 1;
-                
-                longst= seq > longst? seq: longst;
+            for(int i=0; i<n-1; i++){
+                if(map[i][j] == map[i+1][j]) seq++;
+                else{ 
+                    longst= seq > longst? seq: longst;
+                    seq= 1;
+                }
             }
 
+        longst= seq > longst? seq: longst;
         if(longst >= m) ans++;
         }
 
