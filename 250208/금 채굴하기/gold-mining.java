@@ -15,12 +15,12 @@ public class Main {
         int n= Integer.parseInt(st.nextToken());
         int m= Integer.parseInt(st.nextToken());
 
-        int[][] map= new int[n][n];
+        int[][] map= new int[3*n+1][3*n+1];
 
         int total= 0;
-        for(int i=0; i<n; i++){
+        for(int i=n; i<2*n; i++){
             st= new StringTokenizer(br.readLine());
-            for(int j=0; j<n; j++){
+            for(int j=n; j<2*n; j++){
                 map[i][j]= Integer.parseInt(st.nextToken());
                 total+= map[i][j];
             }
@@ -32,15 +32,12 @@ public class Main {
         if(total > 0) ans= 1;
         
         //전체를 돌면서 마름모를 체크
-        for(int i=1; i<n-1; i++){
-            for(int j=1; j<n-1; j++){
+        for(int i=n; i<2*n; i++){
+            for(int j=n; j<2*n; j++){
 
                 int max= 0;
-
-                //상하좌우로 뻗을 수 있는 최대 마름모길이 체크
-                //int maxCnt= Math.min(Math.min(Math.min(i, n- i -1), j), n- j- 1);
                 
-                for(int maxCnt= Math.min(Math.min(Math.min(i, n- i -1), j), n- j- 1); maxCnt>0; maxCnt--){
+                for(int maxCnt= n; maxCnt>0; maxCnt--){
                     //뻗어서 계산하기
                     for(int k=0; k<4; k++){
                         int nx= i+ maxCnt* dx[k];
