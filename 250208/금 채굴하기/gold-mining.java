@@ -46,17 +46,18 @@ public class Main {
                         max+= map[nx][ny];
                     }
 
-                    if(maxCnt > 1){
-                        for(int k= i-maxCnt +1; k<= i+maxCnt-1; k++){
-                            for(int l= j-maxCnt+1; l<= j+maxCnt-1; l++)
-                                max+= map[k][l];
-                        }
+                    for(int k= i-maxCnt +1; k<= i+maxCnt-1; k++){
+                        for(int l= j-maxCnt+1; l<= j+maxCnt-1; l++)
+                            max+= map[k][l];
                     }
 
                 //손해인지 확인
                 //아니면 최대 금의 갯수 수정
-                if(m*max - maxCnt*maxCnt- (maxCnt+1)*(maxCnt+1) >= 0)
+                if(m*max - maxCnt*maxCnt- (maxCnt+1)*(maxCnt+1) >= 0){
                     ans= ans> max ? ans: max;
+                    
+                }
+                    
 
                 max= 0;
                 }
